@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/18 04:34:13 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/18 06:08:51 by orekabe          ###   ########.fr       */
+/*   Created: 2021/11/04 15:27:37 by orekabe           #+#    #+#             */
+/*   Updated: 2022/06/18 04:39:05 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "philo.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <pthread.h>
-
-typedef struct s_philo
+int	ft_atoi(char *str)
 {
-	int			n_philo;
-	int			n_forks;
-	long long	t_to_die;
-	long long	t_to_eat;
-	long long	t_to_sleep;
-	int			n_t_eat;
-}				t_philo;
+	int		i;
+	long	number;
 
-int	ft_atoi(char *str);
-int	ft_isdigit(char c);
-
-#endif
+	i = 0;
+	number = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		number = (number * 10) + (str[i] - 48);
+		i++;
+	}
+	return (number);
+}
