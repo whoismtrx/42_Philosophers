@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 15:27:37 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/18 04:39:05 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/06/18 07:52:29 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	ft_atoi(char *str)
 	i = 0;
 	number = 0;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '+')
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 	{

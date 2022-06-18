@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 01:47:01 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/18 06:10:06 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/06/18 06:33:48 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	ft_check_error(t_philo *philo, int argc, char **argv)
 	return (0);
 }
 
-void	ft_choose(int argc)
+void	ft_perror(int argc)
 {
 	if (argc < 5)
 		printf("NEED MORE ARGUMENTS\n");
@@ -82,6 +82,6 @@ int	 main(int argc, char **argv)
 		return (0);
 	}
 	else
-		ft_choose(argc);
+		ft_perror(argc);
 	return (1);
 }
