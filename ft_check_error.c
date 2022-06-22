@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 07:59:27 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/18 08:03:47 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/06/22 03:49:32 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_check_data(t_philo *philo)
 {
-	if (philo->n_philo == 0 || philo->n_forks == 0
+	if (philo->n_philos == 0 || philo->n_forks == 0
 		|| philo->t_to_die == 0 || philo->t_to_eat == 0
 		|| philo->t_to_sleep == 0 || philo->n_t_eat == 0)
 		return (1);
@@ -23,7 +23,7 @@ int	ft_check_data(t_philo *philo)
 
 void	ft_get_data(t_philo *philo, int argc, char **argv)
 {
-	philo->n_philo = ft_atoi(argv[1]);
+	philo->n_philos = ft_atoi(argv[1]);
 	philo->n_forks = ft_atoi(argv[1]);
 	philo->t_to_die = ft_atoi(argv[2]);
 	philo->t_to_eat = ft_atoi(argv[3]);

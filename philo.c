@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 01:47:01 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/21 03:31:02 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/06/22 04:32:18 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,32 +20,52 @@ void	ft_perror(int argc)
 		printf("TOO MUCH ARGUMENTS\n");
 }
 
-void	*ft_routine()
+void	ft_init(t_philo *philo)
 {
+	pthread_t		th_philos[philo->n_philos];
+	pthread_mutex_t	m_forks[philo->n_forks];
+
+	philo->th_philos = th_philos;
+	philo->m_forks = m_forks;
+}
+
+void	*ft_routine(void *add)
+{
+	t_philo	*philo;
+	int		i;
+
+	add = philo;
+	i = 0;
+	while (1)
+	{
+		
+	}
+	
+	
 	return (NULL);
 }
 
-void	ft_create_philo(t_philo *philo, pthread_t *th_philo)
+void	ft_create_philo(t_philo *philo)
 {
 	int	i;
 
 	i = 0;
-	while(i < philo->n_philo)
+	while(i < philo->n_philos)
 	{
-		pthread_create(&th_philo[i], NULL, &ft_routine, NULL);
+		pthread_create(&philo->th_philos[i], NULL, &ft_routine, philo);
 		printf("Create philo N %d\n", i + 1);
 		i++;
 	}
 }
 
-void	ft_join_philo(t_philo *philo, pthread_t *th_philo)
+void	ft_join_philo(t_philo *philo)
 {
 	int	i;
 
 	i = 0;
-	while(i < philo->n_philo)
+	while(i < philo->n_philos)
 	{
-		pthread_join(th_philo[i], NULL);
+		pthread_join(philo->th_philos[i], NULL);
 		printf("join philo N %d\n", i + 1);
 		i++;
 	}
@@ -53,10 +73,9 @@ void	ft_join_philo(t_philo *philo, pthread_t *th_philo)
 
 void	philos(t_philo *philo)
 {
-	pthread_t		th_philo[philo->n_philo];
-	pthread_mutex_t	m_forks[philo->n_forks];
-	ft_create_philo(philo, th_philo);
-	ft_join_philo(philo, th_philo);
+	ft_init(philo);
+	ft_create_philo(philo);
+	ft_join_philo(philo);
 }
 
 int	 main(int argc, char **argv)
