@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 01:47:01 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/22 04:32:18 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/06/23 05:34:25 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,20 @@ void	ft_init(t_philo *philo)
 	philo->m_forks = m_forks;
 }
 
+void	left_fork(t_philo *philo, int i)
+{
+	pthread_mutex_lock(&philo->m_forks[i + 1]);
+	printf("philo %d take a left fork", i + 1);
+	pthread_mutex_unlock(&philo->m_forks[i + 1]);
+}
+
+void	right_fork(t_philo *philo, int i)
+{
+	pthread_mutex_lock(&philo->m_forks[i]);
+	printf("philo %d take a right fork", i + 1);
+	pthread_mutex_unlock(&philo->m_forks[i]);
+}
+
 void	*ft_routine(void *add)
 {
 	t_philo	*philo;
@@ -38,7 +52,16 @@ void	*ft_routine(void *add)
 	i = 0;
 	while (1)
 	{
-		
+		if (i % 2 == 0)
+		{
+			left_fork(philo, i);
+			right_fork(philo, i);
+		}
+		else
+		{
+			right_fork(philo, i);
+			left_fork(philo, i);
+		}
 	}
 	
 	
@@ -53,7 +76,7 @@ void	ft_create_philo(t_philo *philo)
 	while(i < philo->n_philos)
 	{
 		pthread_create(&philo->th_philos[i], NULL, &ft_routine, philo);
-		printf("Create philo N %d\n", i + 1);
+		// printf("Create philo N %d\n", i + 1);
 		i++;
 	}
 }
@@ -66,7 +89,7 @@ void	ft_join_philo(t_philo *philo)
 	while(i < philo->n_philos)
 	{
 		pthread_join(philo->th_philos[i], NULL);
-		printf("join philo N %d\n", i + 1);
+		// printf("join philo N %d\n", i + 1);
 		i++;
 	}
 }
