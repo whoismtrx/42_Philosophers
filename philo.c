@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 01:47:01 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/26 04:02:53 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/06/27 05:48:45 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ void	*ft_routine(void *add)
 	t_data	*data;
 
 	data = add;
-	// while (1)
-	// {
+	while (1)
+	{
 		ft_taken_a_fork(data);
 		ft_is_eating(data);
 		ft_is_sleeping(data);
 		ft_is_thinking(data);
-	// }
+	}
 	return NULL;
 }
 
@@ -57,6 +57,7 @@ void	ft_create_philos(t_data *data)
 	int	i;
 
 	i = 0;
+	ft_get_start_time(data);
 	while (i < data->philo_d->n_philos)
 	{
 		pthread_create(&data[i].th_philo, NULL, &ft_routine, data + i);

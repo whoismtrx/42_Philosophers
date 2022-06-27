@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 04:34:13 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/26 03:22:55 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/06/27 04:52:56 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <pthread.h>
 # include <stdlib.h>
+# include <sys/time.h>
 
 typedef struct s_philo
 {
@@ -27,13 +28,16 @@ typedef struct s_philo
 	long long		t_to_sleep;
 	int				n_t_eat;
 	pthread_mutex_t	*m_forks;
+	long long		start_time;
 }				t_philo;
 
 typedef struct s_data
 {
-	t_philo			*philo_d;
-	int				id;
-	pthread_t		th_philo;
+	t_philo		*philo_d;
+	int			id;
+	pthread_t	th_philo;
+	long long		state_time;
+	long long		last_meal;
 }				t_data;
 
 int	ft_atoi(char *str);
@@ -43,4 +47,8 @@ void	ft_taken_a_fork(t_data *data);
 void	ft_is_eating(t_data *data);
 void	ft_is_sleeping(t_data *data);
 void	ft_is_thinking(t_data *data);
+void	ft_get_start_time(t_data *data);
+void	ft_get_state_time(t_data *data);
+void	ft_get_last_meal(t_data *data);
+
 #endif

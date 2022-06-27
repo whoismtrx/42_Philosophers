@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 03:21:00 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/26 03:22:53 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/06/27 04:53:48 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void	ft_is_thinking(t_data *data)
 {
-	printf("%d is thinking\n", data->id);
+	ft_get_state_time(data);
+	printf("%lld philo %d is thinking\n",data->state_time, data->id);
 }
