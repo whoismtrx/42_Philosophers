@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 01:47:01 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/27 05:48:45 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/06/27 08:09:48 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ft_init_data(t_philo *philo, t_data *data)
 	int	i;
 
 	i = 0;
+	philo->life = 1;
 	philo->m_forks = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * philo->n_forks);
 	if (!philo->m_forks)
 		return ;
@@ -42,8 +43,9 @@ void	*ft_routine(void *add)
 	t_data	*data;
 
 	data = add;
-	while (1)
+	while (data->philo_d->life)
 	{
+		ft_is_dead(data);
 		ft_taken_a_fork(data);
 		ft_is_eating(data);
 		ft_is_sleeping(data);
