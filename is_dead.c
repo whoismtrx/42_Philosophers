@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 07:32:18 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/28 03:59:43 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/06/28 05:49:01 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	*ft_is_dead(void *add)
 	i = 0;
 	death = 0;
 	data = add;
-	usleep(data->philo_d->t_to_die * 1000);
 	while (i < data->philo_d->n_philos)
 	{
 		pthread_mutex_lock(&data->philo_d->m_death);

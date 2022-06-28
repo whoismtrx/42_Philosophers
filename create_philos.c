@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_sleeping.c                                      :+:      :+:    :+:   */
+/*   create_philos.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/26 00:53:46 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/28 05:46:28 by orekabe          ###   ########.fr       */
+/*   Created: 2022/06/28 05:37:47 by orekabe           #+#    #+#             */
+/*   Updated: 2022/06/28 05:38:03 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_is_sleeping(t_data *data)
+void	ft_create_philos(t_data *data)
 {
-	pthread_mutex_lock(&data->philo_d->m_death);
-	ft_get_state_time(data);
-	pthread_mutex_unlock(&data->philo_d->m_death);
-	pthread_mutex_lock(&data->philo_d->m_death);
-	printf("%lld philo %d is sleeping\n", data->state_time, data->id);
-	pthread_mutex_unlock(&data->philo_d->m_death);
-	usleep(data->philo_d->t_to_sleep * 1000);
+	int	i;
+
+	i = 0;
+	ft_get_start_time(data);
+	while (i < data->philo_d->n_philos)
+	{
+		pthread_create(&data[i].th_philo, NULL, &ft_routine, data + i);
+		i++;
+	}
+	pthread_create(&data->philo_d->t_death, NULL, &ft_is_dead, data);
 }

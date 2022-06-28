@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 01:31:06 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/27 08:07:18 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/06/28 05:43:26 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_get_last_meal(t_data *data)
 {
-	struct timeval c_time;
+	struct timeval	c_time;
 
 	gettimeofday(&c_time, NULL);
 	data->last_meal = (c_time.tv_sec * 1000) + (c_time.tv_usec / 1000);
@@ -23,7 +23,7 @@ void	ft_get_last_meal(t_data *data)
 
 void	ft_get_state_time(t_data *data)
 {
-	struct timeval c_time;
+	struct timeval	c_time;
 
 	gettimeofday(&c_time, NULL);
 	data->state_time = (c_time.tv_sec * 1000) + (c_time.tv_usec / 1000);
@@ -32,8 +32,9 @@ void	ft_get_state_time(t_data *data)
 
 void	ft_get_start_time(t_data *data)
 {
-	struct timeval c_time;
+	struct timeval	c_time;
 
 	gettimeofday(&c_time, NULL);
-	data->philo_d->start_time = (c_time.tv_sec * 1000) + (c_time.tv_usec / 1000);
+	data->philo_d->start_time = (c_time.tv_sec * 1000)
+		+ (c_time.tv_usec / 1000);
 }

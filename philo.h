@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 04:34:13 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/28 03:50:07 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/06/28 05:38:56 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,10 @@ void	ft_is_thinking(t_data *data);
 void	ft_get_start_time(t_data *data);
 void	ft_get_state_time(t_data *data);
 void	ft_get_last_meal(t_data *data);
+void	*ft_routine(void *add);
 void	*ft_is_dead(void *add);
+void	ft_init_data(t_philo *philo, t_data *data);
+void	ft_create_philos(t_data *data);
+void	ft_join_philos(t_data *data);
+
 #endif
