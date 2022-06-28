@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 04:34:13 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/27 07:40:52 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/06/28 03:50:07 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ typedef struct s_philo
 	long long		t_to_sleep;
 	int				n_t_eat;
 	pthread_mutex_t	*m_forks;
+	pthread_mutex_t	m_death;
 	long long		start_time;
 	int				life;
+	pthread_t		t_death;
 }				t_philo;
 
 typedef struct s_data
@@ -37,8 +39,8 @@ typedef struct s_data
 	t_philo		*philo_d;
 	int			id;
 	pthread_t	th_philo;
-	long long		state_time;
-	long long		last_meal;
+	long long	state_time;
+	long long	last_meal;
 }				t_data;
 
 int		ft_atoi(char *str);
@@ -51,5 +53,5 @@ void	ft_is_thinking(t_data *data);
 void	ft_get_start_time(t_data *data);
 void	ft_get_state_time(t_data *data);
 void	ft_get_last_meal(t_data *data);
-void	ft_is_dead(t_data *data);
+void	*ft_is_dead(void *add);
 #endif

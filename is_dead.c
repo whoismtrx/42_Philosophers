@@ -6,22 +6,38 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 07:32:18 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/27 08:40:01 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/06/28 03:59:43 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_is_dead(t_data *data)
+void	*ft_is_dead(void *add)
 {
-	int	death;
+	long long	death;
+	t_data		*data;
+	int			i;
 
-	ft_get_state_time(data);
-	death = data->state_time - data->last_meal;
-	printf("%d\n", death);
-	if (death > data->philo_d->t_to_die)
+	i = 0;
+	death = 0;
+	data = add;
+	usleep(data->philo_d->t_to_die * 1000);
+	while (i < data->philo_d->n_philos)
 	{
-		data->philo_d->life = 0;
-		printf("%lld philo %d is dead\n", data->state_time, data->id);
+		pthread_mutex_lock(&data->philo_d->m_death);
+		ft_get_state_time(&data[i]);
+		pthread_mutex_unlock(&data->philo_d->m_death);
+		death = data[i].state_time - data[i].last_meal;
+		if (death >= data->philo_d->t_to_die)
+		{
+			data->philo_d->life = 0;
+			pthread_mutex_lock(&data->philo_d->m_death);
+			printf("%lld philo %d is dead\n", data[i].state_time, data[i].id);
+			break ;
+		}
+		if (i + 1 == data->philo_d->n_philos)
+			i = -1;
+		i++;
 	}
+	return (NULL);
 }

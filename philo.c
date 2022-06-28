@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 01:47:01 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/27 08:09:48 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/06/28 04:55:39 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_init_data(t_philo *philo, t_data *data)
 
 	i = 0;
 	philo->life = 1;
+	pthread_mutex_init(&philo->m_death, NULL);
 	philo->m_forks = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * philo->n_forks);
 	if (!philo->m_forks)
 		return ;
@@ -45,7 +46,6 @@ void	*ft_routine(void *add)
 	data = add;
 	while (data->philo_d->life)
 	{
-		ft_is_dead(data);
 		ft_taken_a_fork(data);
 		ft_is_eating(data);
 		ft_is_sleeping(data);
@@ -65,6 +65,7 @@ void	ft_create_philos(t_data *data)
 		pthread_create(&data[i].th_philo, NULL, &ft_routine, data + i);
 		i++;
 	}
+	pthread_create(&data->philo_d->t_death, NULL, &ft_is_dead, data);
 }
 
 void	ft_join_philos(t_data *data)
@@ -74,9 +75,10 @@ void	ft_join_philos(t_data *data)
 	i = 0;
 	while (i < data->philo_d->n_philos)
 	{
-		pthread_join(data[i].th_philo, NULL);
+		pthread_detach(data[i].th_philo);
 		i++;
 	}
+	pthread_join(data->philo_d->t_death, NULL);
 }
 
 void	philos(t_philo *philo)

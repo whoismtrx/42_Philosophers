@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 00:53:46 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/27 04:53:39 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/06/28 03:57:34 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 void	ft_is_sleeping(t_data *data)
 {
+	pthread_mutex_lock(&data->philo_d->m_death);
 	ft_get_state_time(data);
+	pthread_mutex_unlock(&data->philo_d->m_death);
+	pthread_mutex_lock(&data->philo_d->m_death);
 	printf("%lld philo %d is sleeping\n",data->state_time, data->id);
+	pthread_mutex_unlock(&data->philo_d->m_death);
 	usleep(data->philo_d->t_to_sleep * 1000);
 }
