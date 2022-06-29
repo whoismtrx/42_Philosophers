@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_sleeping.c                                      :+:      :+:    :+:   */
+/*   my_sleep.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/26 00:53:46 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/28 22:04:24 by orekabe          ###   ########.fr       */
+/*   Created: 2022/06/28 15:24:13 by orekabe           #+#    #+#             */
+/*   Updated: 2022/06/28 22:05:12 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_is_sleeping(t_data *data)
+void	ft_mysleep(long long time)
 {
-	pthread_mutex_lock(&data->philo_d->m_death);
-	ft_get_state_time(data);
-	pthread_mutex_unlock(&data->philo_d->m_death);
-	pthread_mutex_lock(&data->philo_d->m_death);
-	printf("%lld philo %d is sleeping\n", data->state_time, data->id);
-	pthread_mutex_unlock(&data->philo_d->m_death);
-	ft_mysleep(data->philo_d->t_to_sleep);
+	struct timeval	s_time;
+	long long		c_time;
+	long long		n_time;
+
+	gettimeofday(&s_time, NULL);
+	c_time = (s_time.tv_sec * 1000) + (s_time.tv_usec / 1000);
+	n_time = c_time + time;
+	while (c_time < n_time)
+	{
+		gettimeofday(&s_time, NULL);
+		c_time = (s_time.tv_sec * 1000) + (s_time.tv_usec / 1000);
+	}
 }
+

@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 01:47:01 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/28 05:46:54 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/06/29 03:23:59 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	main(int argc, char **argv)
 		if (ft_check_error(&philo, argc, argv))
 			return (1);
 		philos(&philo);
+		ft_mysleep(200);
 		return (0);
 	}
 	else

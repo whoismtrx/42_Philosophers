@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 05:35:54 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/28 05:44:33 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/06/29 04:07:44 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	ft_init_data(t_philo *philo, t_data *data)
 	int	i;
 
 	i = 0;
-	philo->life = 1;
-	pthread_mutex_init(&philo->m_death, NULL);
+	if (pthread_mutex_init(&philo->m_death, NULL))
+		return ;
 	philo->m_forks = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t)
 			* philo->n_forks);
 	if (!philo->m_forks)
@@ -27,7 +27,8 @@ void	ft_init_data(t_philo *philo, t_data *data)
 	{
 		data[i].philo_d = philo;
 		data[i].id = i + 1;
-		pthread_mutex_init(&philo->m_forks[i], NULL);
+		if (pthread_mutex_init(&philo->m_forks[i], NULL))
+			return ;
 		i++;
 	}
 }
