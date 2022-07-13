@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:24:13 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/28 22:05:12 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/07/13 16:51:13 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ft_mysleep(long long time)
 	{
 		gettimeofday(&s_time, NULL);
 		c_time = (s_time.tv_sec * 1000) + (s_time.tv_usec / 1000);
+		usleep(50);
 	}
 }
 

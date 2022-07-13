@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 05:01:48 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/28 22:04:15 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/07/04 21:36:08 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_left_fork(t_data *data)
 		ft_get_state_time(data);
 		pthread_mutex_unlock(&data->philo_d->m_death);
 		pthread_mutex_lock(&data->philo_d->m_death);
-		printf("%lld philo %d has taken a fork\n", data->state_time, data->id);
+		printf("%lld %d has taken a fork\n", data->state_time, data->id);
 		pthread_mutex_unlock(&data->philo_d->m_death);
 	}
 	else
@@ -31,7 +31,7 @@ void	ft_left_fork(t_data *data)
 		ft_get_state_time(data);
 		pthread_mutex_unlock(&data->philo_d->m_death);
 		pthread_mutex_lock(&data->philo_d->m_death);
-		printf("%lld philo %d has taken a fork\n", data->state_time, data->id);
+		printf("%lld %d has taken a fork\n", data->state_time, data->id);
 		pthread_mutex_unlock(&data->philo_d->m_death);
 	}
 }
@@ -43,7 +43,7 @@ void	ft_right_fork(t_data *data)
 	ft_get_state_time(data);
 	pthread_mutex_unlock(&data->philo_d->m_death);
 	pthread_mutex_lock(&data->philo_d->m_death);
-	printf("%lld philo %d has taken a fork\n", data->state_time, data->id);
+	printf("%lld %d has taken a fork\n", data->state_time, data->id);
 	pthread_mutex_unlock(&data->philo_d->m_death);
 }
 

@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 05:36:38 by orekabe           #+#    #+#             */
-/*   Updated: 2022/07/04 05:26:17 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/07/13 20:03:52 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_routine(void *add)
 
 	data = add;
 	if (data->id % 2 == 0)
-		ft_mysleep(1);
+		usleep(50);
 	while (1)
 	{
 		ft_taken_a_fork(data);

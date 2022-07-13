@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 07:32:18 by orekabe           #+#    #+#             */
-/*   Updated: 2022/07/04 04:48:22 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/07/13 23:39:01 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	*ft_is_dead(void *add)
 		if (data[i].death >= data->philo_d->t_to_die)
 		{
 			pthread_mutex_lock(&data->philo_d->m_death);
-			printf("%lld philo %d is dead\n", data[i].state_time, data[i].id);
+			printf("%lld %d died\n", data[i].state_time, data[i].id);
 			return (NULL);
 		}
 		if (data[i].repeat == data->philo_d->n_t_eat)

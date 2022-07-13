@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 03:21:00 by orekabe           #+#    #+#             */
-/*   Updated: 2022/07/04 18:21:56 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/07/13 23:13:28 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_is_thinking(t_data *data)
 	ft_get_state_time(data);
 	pthread_mutex_unlock(&data->philo_d->m_death);
 	pthread_mutex_lock(&data->philo_d->m_death);
-	printf("%lld philo %d is thinking\n", data->state_time, data->id);
+	printf("%lld %d is thinking\n", data->state_time, data->id);
 	pthread_mutex_unlock(&data->philo_d->m_death);
-	ft_mysleep(1);
+	usleep(100);
 }
