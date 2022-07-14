@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 01:47:01 by orekabe           #+#    #+#             */
-/*   Updated: 2022/07/14 00:17:21 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/07/14 01:44:54 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	philos(t_philo *philo)
 	ft_init_data(philo, data);
 	ft_create_philos(data);
 	ft_join_philos(data);
+	free(data);
 }
 
 int	main(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 05:38:26 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/29 00:07:45 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/07/14 01:46:26 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,5 @@ void	ft_join_philos(t_data *data)
 		i++;
 	}
 	pthread_mutex_destroy(&data->philo_d->m_death);
+	free(data->philo_d->m_forks);
 }
