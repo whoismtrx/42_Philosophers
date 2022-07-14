@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 07:59:27 by orekabe           #+#    #+#             */
-/*   Updated: 2022/06/22 03:49:32 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/07/14 00:18:35 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_check_error(t_philo *philo, int argc, char **argv)
 		{
 			if (!ft_isdigit(argv[i][j]))
 			{
-				printf("INVALID ARGUMENTS\n");
+				write(2, "INVALID ARGUMENTS\n", 18);
 				return (1);
 			}
 			j++;
@@ -57,7 +57,7 @@ int	ft_check_error(t_philo *philo, int argc, char **argv)
 	ft_get_data(philo, argc, argv);
 	if (ft_check_data(philo))
 	{
-		printf("INVALID ARGUMENTS\n");
+		write(2, "INVALID ARGUMENTS\n", 18);
 		return (1);
 	}
 	return (0);

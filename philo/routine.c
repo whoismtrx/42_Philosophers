@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 05:36:38 by orekabe           #+#    #+#             */
-/*   Updated: 2022/07/13 20:03:52 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/07/13 23:57:47 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	*ft_routine(void *add)
 	{
 		ft_taken_a_fork(data);
 		ft_is_eating(data);
-		data->repeat++;
 		ft_is_sleeping(data);
 		ft_is_thinking(data);
+		data->repeat++;
 	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 01:47:01 by orekabe           #+#    #+#             */
-/*   Updated: 2022/07/04 03:38:18 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/07/14 00:17:21 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	ft_perror(int argc)
 {
 	if (argc < 5)
-		printf("NEED MORE ARGUMENTS\n");
+		write(2, "NEED MORE ARGUMENTS\n", 20);
 	else if (argc > 6)
-		printf("TOO MUCH ARGUMENTS\n");
+		write(2, "TOO MUCH ARGUMENTS\n", 19);
 }
 
 void	philos(t_philo *philo)

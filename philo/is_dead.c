@@ -6,11 +6,27 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 07:32:18 by orekabe           #+#    #+#             */
-/*   Updated: 2022/07/13 23:39:01 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/07/14 00:07:37 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	ft_check(t_data *data, int i)
+{
+	if (data->philo_d->a_repeat == data->philo_d->n_t_eat)
+	{
+		pthread_mutex_lock(&data->philo_d->m_death);
+		return (1);
+	}
+	if (data[i].death >= data->philo_d->t_to_die)
+	{
+		pthread_mutex_lock(&data->philo_d->m_death);
+		printf("%lld %d died\n", data[i].state_time, data[i].id);
+		return (1);
+	}
+	return (0);
+}
 
 void	*ft_is_dead(void *add)
 {
@@ -28,14 +44,8 @@ void	*ft_is_dead(void *add)
 		pthread_mutex_lock(&data->philo_d->m_death);
 		data[i].death = data[i].state_time - data[i].last_meal;
 		pthread_mutex_unlock(&data->philo_d->m_death);
-		if (data->philo_d->a_repeat == data->philo_d->n_t_eat)
-			return NULL;
-		if (data[i].death >= data->philo_d->t_to_die)
-		{
-			pthread_mutex_lock(&data->philo_d->m_death);
-			printf("%lld %d died\n", data[i].state_time, data[i].id);
+		if (ft_check(data, i))
 			return (NULL);
-		}
 		if (data[i].repeat == data->philo_d->n_t_eat)
 			data[i].philo_d->a_repeat++;
 		if (i + 1 == data->philo_d->n_philos)
