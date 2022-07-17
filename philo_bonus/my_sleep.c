@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_eating.c                                        :+:      :+:    :+:   */
+/*   my_sleep.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/25 23:13:58 by orekabe           #+#    #+#             */
-/*   Updated: 2022/07/17 17:31:14 by orekabe          ###   ########.fr       */
+/*   Created: 2022/06/28 15:24:13 by orekabe           #+#    #+#             */
+/*   Updated: 2022/07/16 18:28:55 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-void	ft_is_eating(t_data *data)
+void	ft_mysleep(long long time)
 {
-	sem_wait(data->philo_d->s_death);
-	ft_get_last_meal(data);
-	ft_get_state_time(data);
-	printf("%lld %d is eating\n", data->state_time, data->id);
-	sem_post(data->philo_d->s_death);
-	ft_mysleep(data->philo_d->t_to_eat);
-	sem_post(data->philo_d->s_forks);
-	sem_post(data->philo_d->s_forks);
+	struct timeval	s_time;
+	long long		c_time;
+	long long		n_time;
+
+	gettimeofday(&s_time, NULL);
+	c_time = (s_time.tv_sec * 1000) + (s_time.tv_usec / 1000);
+	n_time = c_time + time;
+	while (c_time < n_time)
+	{
+		gettimeofday(&s_time, NULL);
+		c_time = (s_time.tv_sec * 1000) + (s_time.tv_usec / 1000);
+		usleep(50);
+	}
 }

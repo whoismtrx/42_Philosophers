@@ -6,20 +6,26 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 05:38:26 by orekabe           #+#    #+#             */
-/*   Updated: 2022/07/05 04:01:57 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/07/17 20:22:44 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-void	ft_join_philos(t_data *data)
+void	ft_kill(t_data *data)
 {
 	int	i;
 
 	i = 0;
 	while (i < data->philo_d->n_philos)
 	{
-		waitpid(data->philo_d->pid[i], 0, 0);
+		kill(data->philo_d->pid[i], 9);
 		i++;
 	}
+}
+
+void	ft_join_philos(t_data *data)
+{
+	waitpid(-1, 0, 0);
+	ft_kill(data);
 }
