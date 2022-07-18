@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 15:27:37 by orekabe           #+#    #+#             */
-/*   Updated: 2022/07/05 00:12:11 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/07/18 02:43:40 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ int	ft_atoi(char *str)
 		number = (number * 10) + (str[i] - 48);
 		i++;
 	}
+	if (str[i])
+		return (0);
 	return (number);
 }
