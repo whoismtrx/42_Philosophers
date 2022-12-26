@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 01:31:06 by orekabe           #+#    #+#             */
-/*   Updated: 2022/07/05 04:36:46 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/12/26 20:34:47 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	ft_get_state_time(t_data *data)
 	gettimeofday(&c_time, NULL);
 	data->state_time = (c_time.tv_sec * 1000) + (c_time.tv_usec / 1000);
 	data->state_time -= data->philo_d->start_time;
+	printf("%p\n", &data->state_time);
 }
 
 void	ft_get_start_time(t_data *data)

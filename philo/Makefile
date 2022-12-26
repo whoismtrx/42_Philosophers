@@ -6,13 +6,13 @@
 #    By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 19:47:14 by orekabe           #+#    #+#              #
-#    Updated: 2022/07/04 20:03:14 by orekabe          ###   ########.fr        #
+#    Updated: 2022/12/26 17:44:56 by orekabe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=thread
 
 NAME = philo
 

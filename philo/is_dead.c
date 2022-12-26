@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 07:32:18 by orekabe           #+#    #+#             */
-/*   Updated: 2022/07/14 00:07:37 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/12/26 18:28:12 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,12 @@ void	*ft_is_dead(void *add)
 		pthread_mutex_unlock(&data->philo_d->m_death);
 		if (ft_check(data, i))
 			return (NULL);
+			pthread_mutex_lock(&data->philo_d->m_death);
 		if (data[i].repeat == data->philo_d->n_t_eat)
+		{
 			data[i].philo_d->a_repeat++;
+		}
+			pthread_mutex_unlock(&data->philo_d->m_death);
 		if (i + 1 == data->philo_d->n_philos)
 			i = -1;
 		i++;
