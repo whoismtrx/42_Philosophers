@@ -12,24 +12,42 @@
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror
 
 NAME = philo_bonus
 
-HEADER = philo.h
+HEADER = -I./include
 
-SRC = create_philos.c ft_atoi.c ft_check_error.c ft_isdigit.c get_time.c init_data.c is_dead.c \
-		is_eating.c is_sleeping.c is_thinking.c join_philos.c my_sleep.c philo_bonus.c routine.c taken_a_fork.c
+SRCD = ./src
 
-OBJ = $(SRC:.c=.o)
+OBJD = ./objs
+
+SRC = $(SRCD)/create_philos.c $(SRCD)/ft_atoi.c $(SRCD)/ft_check_error.c $(SRCD)/ft_isdigit.c $(SRCD)/get_time.c $(SRCD)/init_data.c $(SRCD)/is_dead.c \
+		$(SRCD)/is_eating.c $(SRCD)/is_sleeping.c i$(SRCD)/is_thinking.c $(SRCD)/join_philos.c $(SRCD)/my_sleep.c $(SRCD)/philo_bonus.c $(SRCD)/routine.c $(SRCD)/taken_a_fork.c
+
+OBJ = $(addprefix $(OBJD)/, $(notdir $(SRC:.c=.o)))
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	@printf "                                               \r"
+	@echo "██████╗ ██╗  ██╗██╗██╗      ██████╗ ███████╗ ██████╗ ██████╗ ██╗  ██╗███████╗██████╗ ███████╗"
+	@echo "██╔══██╗██║  ██║██║██║     ██╔═══██╗██╔════╝██╔═══██╗██╔══██╗██║  ██║██╔════╝██╔══██╗██╔════╝"
+	@echo "██████╔╝███████║██║██║     ██║   ██║███████╗██║   ██║██████╔╝███████║█████╗  ██████╔╝███████╗"
+	@echo "██╔═══╝ ██╔══██║██║██║     ██║   ██║╚════██║██║   ██║██╔═══╝ ██╔══██║██╔══╝  ██╔══██╗╚════██║"
+	@echo "██║     ██║  ██║██║███████╗╚██████╔╝███████║╚██████╔╝██║     ██║  ██║███████╗██║  ██║███████║"
+	@echo "╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝"
+	@echo "                   			BY: MTRX"
+	@$(CC) $(CFLAGS) $(OBJ) -o $@
+
+$(OBJD)/%.o: $(SRCD)/%.c
+	@mkdir -p $(OBJD)
+	@printf "                                               \r"
+	@printf "Compiling $<\r"
+	@$(CC) -c $(CFLAGS) $(HEADER) $< -o $@
 
 clean:
-	rm -rf $(OBJ)
+	rm -rf $(OBJD)
 
 fclean: clean
 	rm -rf $(NAME)
