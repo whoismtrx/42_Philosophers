@@ -1,5 +1,7 @@
 # Philosophers
 
+![](https://github.com/whoismtrx/42_Philosophers/blob/main/gifs/philosophers.gif)
+
 ## Overview
 
 This project is a simulation of the dining philosophers problem. The dining philosophers problem is a classic synchronization problem that models a situation where some philosophers are sitting at a table and they spend their time thinking and eating and sleeping. The philosophers share a common resources, table and forks and have to use them in a way that they don't starve and don't create a deadlock.
