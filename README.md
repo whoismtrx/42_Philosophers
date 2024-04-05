@@ -23,10 +23,14 @@ To get a local copy of the project, perform the following steps:
 ```
 git clone https://github.com/whoismtrx/42_Philosophers.git philosophers
 cd philosophers
+```
 for Mandatory part:
+```
 cd philo
 make
+```
 for Bonus part:
+```
 cd philo_bonus
 make
 ```
