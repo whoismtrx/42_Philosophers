@@ -1,6 +1,6 @@
 # Philosophers
 
-![](https://github.com/whoismtrx/42_Philosophers/blob/main/gifs/philosophers.gif)
+![](https://github.com/whoismtrx/42_Philosophers/blob/main/philosophers.gif)
 
 ## Overview
 
